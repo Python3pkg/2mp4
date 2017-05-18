@@ -323,21 +323,21 @@ def convert(filename, args):
 def check_required_programs():
     # Check that mediainfo is installed
     if sh.which('mediainfo') is None:
-        print(((
+        print((
             '%s: Cannot find mediainfo, please install before continuing.'
         ) % (
             PROG_NAME
-        )))
+        ))
         exit(1)
 
     # Check that ffmpeg is installed
     if sh.which('ffmpeg') is None:
-        print(((
+        print((
             '%s: Cannot find ffmpeg. '
             'Please install ffmpeg version 1.0 or later.'
         ) % (
             PROG_NAME
-        )))
+        ))
 
     out = StringIO()
     try:
@@ -346,16 +346,16 @@ def check_required_programs():
             _out=out
         )
     except sh.ErrorReturnCode:
-        print(((
+        print((
             '%s: unsupported version of ffmpeg installed. '
             'Install ffmpeg version 1.0 or higher'
-        ) % PROG_NAME))
+        ) % PROG_NAME)
 
     if 'libx264' not in out.getvalue():
-        print(((
+        print((
             "%s: Installed version of ffmeg doesn't include libx264 support. "
             "Install version of ffmpeg that supports libx264."
-        ) % PROG_NAME))
+        ) % PROG_NAME)
         exit(1)
 
     config.extra_opts = ['-strict', 'experimental']

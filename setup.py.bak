@@ -55,7 +55,7 @@ setup(
     [console_scripts]
     2mp4 = py2mp4:main
     """,
-    classifiers=[_f for _f in classifiers.split('\n') if _f],
+    classifiers=filter(None, classifiers.split('\n')),
     #long_description=read('README.rst') + '\n\n' + read('CHANGES'),
     #extras_require={'test': []}
 )
